@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: operation-quasar
+  template:
+    metadata:
+      labels:
+        app: operation-quasar
+        version: v2  # Cambia la etiqueta de versión a una nueva
+    spec:
+      containers:
+      - name: app
+        image: us-central1-docker.pkg.dev/our-voice-417119/vozy/operation-quasar:v1.0
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8089

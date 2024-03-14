@@ -1,4 +1,5 @@
-FROM golang:1.19-alpine AS build
+# Etapa de construcción
+FROM golang:1.21.3-bookworm as build
 
 WORKDIR /app
 
@@ -6,22 +7,32 @@ WORKDIR /app
 COPY go.mod go.sum ./
 RUN go mod download
 
+# Instala Git si es necesario
+RUN apt-get install --no-install-recommends -y git
+
 # Copia todo el código fuente
 COPY . .
 
 # Compila la aplicación
-RUN CGO_ENABLED=0 GOOS=linux go build -o app .
+RUN go build -mod=vendor -ldflags '-s -w' -o build/bin/operation-quasar main.go
 
 # Etapa de producción
-FROM gcr.io/distroless/static:nonroot
+FROM gcr.io/distroless/base-debian12:nonroot
 
+ENV GIN_MODE=release
 WORKDIR /app
 
-# Copia el binario de la etapa de construcción
-COPY --from=build /app/app .
+# Copia directorio de configuración
+COPY --from=build /app/cmd/configs /app/cmd/configs
 
-# Expone el puerto
-EXPOSE 8080
+# Copia el binario
+COPY --from=build /app/build/bin/operation-quasar /app
+
+# Exponer puertos
+EXPOSE 8089
+
+# Establecer el usuario no root
+USER nonroot:nonroot
 
 # Define el comando de entrada
-ENTRYPOINT ["./app"]
+ENTRYPOINT ["./operation-quasar"]

@@ -1,0 +1,25 @@
+Introduction
+As you might have heard, Han Solo, the newly appointed General of the Rebel Alliance, has initiated Operation Quasar Fire. The objective? To strike a decisive blow against the oppressive Galactic Empire. Our mission is clear: intercept the distress call from the Imperial cargo ship and retrieve its crucial cargo—rations and armaments destined for an entire legion of troops.
+
+Problem Statement
+The Rebel Alliance's intelligence service has intercepted a distress signal emanating from an Imperial cargo ship lost in an asteroid field. Unfortunately, the message appears to be fragmented, possibly due to interference from the surrounding asteroids. Our task is to develop a program in Golang that can accurately determine the source and content of the distress message.
+
+Approach
+Level 1: Triangulating the Signal
+To pinpoint the source of the distress call, we'll leverage the data received from three strategically positioned satellites: Kenobi, Skywalker, and Sato. Using the distances measured by each satellite and the message fragments they've intercepted, our program will triangulate the ship's coordinates and reconstruct the distress message.
+
+Level 2: Building a REST API
+In the next phase of the project, we'll develop a RESTful API to facilitate communication with our program. The API will receive data from the satellites via HTTP POST requests and return the ship's location and the complete distress message. We'll host this API on a cloud computing platform for seamless access and scalability.
+
+Level 3: Splitting the Signal
+In the final stage, we'll enhance our API to handle partial data submissions from individual satellites. This will enable us to collect additional data over time and refine our calculations. Additionally, we'll implement a GET endpoint to retrieve the ship's location and message based on the aggregated data received from multiple submissions.
+
+Usage
+Running the Program
+To run the program locally, simply execute the provided Go code. Ensure that you have Go installed on your system and all dependencies are met.
+
+Accessing the API
+To interact with the REST API, make HTTP POST requests to the designated endpoints (/topsecret/ and /topsecret_split/). Provide the necessary data in the request payload and receive the ship's location and message in the response.
+
+Conclusion
+Operation Quasar Fire presents a unique challenge, but with our innovative approach and robust implementation, we're confident in our ability to succeed. Together, let's bring hope to the Rebel Alliance and strike a decisive blow against the Empire!
