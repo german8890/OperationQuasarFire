@@ -1,0 +1,168 @@
+openapi: 3.0.3
+info:
+  title: Swagger StarshipCommsResolver
+  description: |-
+
+    Servicio encargado de desifrar el mensaje y triangular la posición de una nave perdida respecto a tres satelites. El servicio recibe la información de los tres satelites y retorna la fuente y contenido del mensaje de auxilio.
+    
+    Links Utiles:
+    - [The StarshipCommsResolver repository](https://github.com/german8890/OperationQuasarFire)
+    
+  termsOfService: http://swagger.io/terms/
+  contact:
+    email: evanl15889@gmail.com
+  version: 1.0.0
+
+tags:
+  - name: StarshipCommsResolver
+    description: Everything about your Starship
+    externalDocs:
+      description: Find out more
+      url: http://swagger.io
+
+paths:
+  /CreateTopSecret:
+    post:
+      tags:
+        - StarshipCommsResolver
+      summary: agrega un nuevo Satelite
+      description: Recibe un arreglo de 3 satelites con nombre, distancia y mensaje. Triangula la distancia respecto a cada satelite y decifra el mensaje.
+      operationId: addStarshipCommsResolver
+      requestBody:
+        description: Crea un nuevo satelite
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Satellite'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Satellite200'          
+        '405':
+          description: Invalid input
+          
+  /TopSecret_Split/NOM_SATELITE:
+    post:
+      tags:
+        - StarshipCommsResolver
+      summary: Recibe informacion de un satelite
+      description: Recibe la distancia y mensaje de un solo satelite, lo acomula en un arreglo hasta tener la infromación de tres satelites distintos.
+      operationId: addStarshipCommsResolverS
+      requestBody:
+        description: Recibe informacion de un satelite
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SatelliteS'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SatelliteS200'          
+        '405':
+          description: Invalid input        
+  
+  /GetTopSecret:
+    get:
+      tags:
+        - StarshipCommsResolver
+      summary: consulta un  Satelite
+      description: Recibe un arreglo de 3 satelites con nombre, distancia y mensaje. Triangula la distancia respecto a cada satelite y decifra el mensaje.
+      operationId: addStarshipCommsResolverG
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Satellite200'          
+        '405':
+          description: Invalid input  
+          
+components:
+  schemas:
+    Satellite:
+      type: object
+      properties:
+        name:
+          type: string
+          example: kenobi
+        distance:
+          type: number
+          example: 100
+        message:
+          type: array
+          items:
+            type: string   
+            example: este mensaje
+            
+    Satellite200:
+      type: object
+      properties:
+        position:
+            type: object  
+            properties: 
+              x:
+                  type: string
+                  example: 261.41962
+              y:
+                  type: string
+                  example: 1105.2816
+              message:
+                  type: string 
+                  example: este es un mensaje secreto
+        result:
+            type: object  
+            properties: 
+              intercode:
+                  type: string
+                  example: 200
+              message:
+                  type: string
+                  example: Ok
+              Detail:
+                  type: string
+                  example: ""
+                  
+              source:
+                  type: string 
+                  example: Find position to message
+        
+    SatelliteS:
+      type: object
+      properties:
+        distance:
+          type: number
+          example: 100
+        message:
+          type: array
+          items:
+            type: string   
+            example: este mensaje
+            
+    SatelliteS200:
+      type: object
+      properties:
+        result:
+            type: object  
+            properties: 
+              intercode:
+                  type: string
+                  example: 200
+              message:
+                  type: string
+                  example: Ok
+              Detail:
+                  type: string
+                  example: ""
+                  
+              source:
+                  type: string 
+                  example: Find position to message

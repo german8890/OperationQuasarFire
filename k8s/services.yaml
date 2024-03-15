@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-service
+spec:
+  selector:
+    app: operation-quasar
+  ports:
+    - protocol: TCP
+      port: 8089
+      targetPort: 8089
+      name: http
+  type: LoadBalancer
