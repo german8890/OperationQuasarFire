@@ -15,11 +15,28 @@ Level 3: Splitting the Signal
 In the final stage, we'll enhance our API to handle partial data submissions from individual satellites. This will enable us to collect additional data over time and refine our calculations. Additionally, we'll implement a GET endpoint to retrieve the ship's location and message based on the aggregated data received from multiple submissions.
 
 Usage
-Running the Program
-To run the program locally, simply execute the provided Go code. Ensure that you have Go installed on your system and all dependencies are met.
-
-Accessing the API
-To interact with the REST API, make HTTP POST requests to the designated endpoints (/topsecret/ and /topsecret_split/). Provide the necessary data in the request payload and receive the ship's location and message in the response.
+Step by Step guide to using API
+This is a step by step to use the Operation Quasar Fire API:
+Choose the endpoint to use:
+You must decide whether you want to use the CreateTopSecret or CreateTopSecretSplit endpoint depending on your needs.
+Get the authentication token:
+Uses the authentication collection provided in the repository to obtain an authentication token.
+Copy the generated token.
+Add the token to the Headers:
+Make a call to the selected endpoint.
+Add the token to the API header with the Authorization key and the Bearer value followed by the generated token.
+Choose the number and type of satellites:
+If you chose CreateTopSecret, make sure to upload an array with the information of the satellites to decrypt. This array cannot contain more than 3 satellites and must include valid information.
+If you selected CreateTopSecretSplit, add the satellites one by one. You cannot add more than 3 and they must be 3 different satellites.
+Create the satellites:
+Once the satellites are selected and configured, use the corresponding endpoint to create them in the system.
+In the case of CreateTopSecret, the satellites will be saved in a PostgreSQL database.
+For CreateTopSecretSplit, satellites are added one by one and cached.
+Use the GetTopSecret endpoint:
+This endpoint allows you to obtain the message information and the position of the ship using information from the satellites.
+Provide the input parameter of the satellite you want to search for.
+Note that this endpoint loads the information from a cache that was previously configured to determine how long it is saved.
+By following these steps you will be able to use the Operation Quasar Fire API to determine the position and message of a ship in distress using information from satellites.
 
 Conclusion
 Operation Quasar Fire presents a unique challenge, but with our innovative approach and robust implementation, we're confident in our ability to succeed. Together, let's bring hope to the Rebel Alliance and strike a decisive blow against the Empire!
