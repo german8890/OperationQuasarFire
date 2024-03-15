@@ -1,17 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app-deployment
+  name: operation-quasar-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: operation-quasar
+      version: v2  # Agrega un nuevo campo para la versión
   template:
     metadata:
       labels:
         app: operation-quasar
-        version: v2  # Cambia la etiqueta de versión a una nueva
+        version: v2  # Mantén el mismo valor para la versión en la plantilla
     spec:
       containers:
       - name: app
