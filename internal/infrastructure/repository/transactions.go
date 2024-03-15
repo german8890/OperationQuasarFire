@@ -6,7 +6,7 @@ import (
 	"github.com/OperationQuasarFire/internal/pkg/entity"
 )
 
-func (p BDRepository) CreateTaskTotal(request *entity.SatelliteRequest) (string, error) {
+func (p BDRepository) Create(request *entity.SatelliteRequest) (string, error) {
 	query := "INSERT INTO Satellites (name, distance, message) VALUES ($1, $2, $3)"
 	stmt, err := p.db.Prepare(query)
 	if err != nil {

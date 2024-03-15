@@ -17,9 +17,9 @@ func RegisterRoutes2(e *gin.Engine, db *sql.DB) {
 	cacheCleanupInterval := 10 * time.Minute
 	cacheInstance := cache.New(cacheExpiration, cacheCleanupInterval)
 
-	taskRepository := repository.NewBdRepository(db)
+	SatelliteRepository := repository.NewBdRepository(db)
 	topsecretService := services.NewService(nil)
-	topsecretHandler := newHandler(topsecretService, taskRepository)
+	topsecretHandler := newHandler(topsecretService, SatelliteRepository)
 	var topsecretsplitService = services.NewServiceSplit(nil)
 	topsecretSplitHandler := newSplitHandler(topsecretsplitService, cacheInstance)
 

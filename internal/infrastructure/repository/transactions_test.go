@@ -9,7 +9,7 @@ import (
 	"github.com/DATA-DOG/go-sqlmock"
 )
 
-func TestBDRepository_CreateTaskTotal_Error(t *testing.T) {
+func TestBDRepository_Create_Error(t *testing.T) {
 	db, mock, err := sqlmock.New()
 	if err != nil {
 		t.Fatalf("an error '%s' was not expected when opening a stub database connection", err)
@@ -27,7 +27,7 @@ func TestBDRepository_CreateTaskTotal_Error(t *testing.T) {
 
 	request := &entity.SatelliteRequest{Satellites: satellites}
 
-	_, err = repo.CreateTaskTotal(request)
+	_, err = repo.Create(request)
 
 	if err == nil {
 		t.Error("Expected error, but got nil")

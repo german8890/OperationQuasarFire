@@ -26,7 +26,7 @@ func (uc *TopsecrestUseCase) CreateTopSecret(satellite *entity.SatelliteRequest)
 	var message [][]string
 	distance := []float32{}
 
-	uc.repo.CreateTaskTotal(satellite)
+	uc.repo.Create(satellite)
 
 	for _, satellite := range satellite.Satellites {
 		message = append(message, satellite.Message)

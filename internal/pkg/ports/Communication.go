@@ -10,5 +10,5 @@ type CommunicationServices interface {
 }
 
 type DBRepository interface {
-	CreateTaskTotal(request *entity.SatelliteRequest) (string, error)
+	Create(request *entity.SatelliteRequest) (string, error)
 }
