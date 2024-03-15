@@ -1,12 +1,12 @@
 openapi: 3.0.3
 info:
-  title: Swagger StarshipCommsResolver
+  title: Swagger OperationQuasarFire
   description: |-
 
     Servicio encargado de desifrar el mensaje y triangular la posición de una nave perdida respecto a tres satelites. El servicio recibe la información de los tres satelites y retorna la fuente y contenido del mensaje de auxilio.
     
     Links Utiles:
-    - [The StarshipCommsResolver repository](https://github.com/german8890/OperationQuasarFire)
+    - [The OperationQuasarFire repository](https://github.com/german8890/OperationQuasarFire)
     
   termsOfService: http://swagger.io/terms/
   contact:
@@ -14,7 +14,7 @@ info:
   version: 1.0.0
 
 tags:
-  - name: StarshipCommsResolver
+  - name: OperationQuasarFire
     description: Everything about your Starship
     externalDocs:
       description: Find out more
@@ -24,7 +24,7 @@ paths:
   /CreateTopSecret:
     post:
       tags:
-        - StarshipCommsResolver
+        - OperationQuasarFire
       summary: agrega un nuevo Satelite
       description: Recibe un arreglo de 3 satelites con nombre, distancia y mensaje. Triangula la distancia respecto a cada satelite y decifra el mensaje.
       operationId: addStarshipCommsResolver
@@ -48,7 +48,7 @@ paths:
   /TopSecret_Split/NOM_SATELITE:
     post:
       tags:
-        - StarshipCommsResolver
+        - OperationQuasarFire
       summary: Recibe informacion de un satelite
       description: Recibe la distancia y mensaje de un solo satelite, lo acomula en un arreglo hasta tener la infromación de tres satelites distintos.
       operationId: addStarshipCommsResolverS
@@ -72,7 +72,7 @@ paths:
   /GetTopSecret:
     get:
       tags:
-        - StarshipCommsResolver
+        - OperationQuasarFire
       summary: consulta un  Satelite
       description: Recibe un arreglo de 3 satelites con nombre, distancia y mensaje. Triangula la distancia respecto a cada satelite y decifra el mensaje.
       operationId: addStarshipCommsResolverG
