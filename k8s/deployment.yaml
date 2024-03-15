@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: operation-quasar-deployment
+  name: app-deployment
 spec:
   replicas: 1
   selector:
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: app
-        image: us-central1-docker.pkg.dev/our-voice-417119/vozy/operation-quasar:v1.0
+        image: us-central1-docker.pkg.dev/our-voice-417119/vozy/operation-quasar:v2.0
         imagePullPolicy: Always
         ports:
         - containerPort: 8089

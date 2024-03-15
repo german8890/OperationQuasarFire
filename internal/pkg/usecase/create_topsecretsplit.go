@@ -76,9 +76,6 @@ func (uc *TopsecretSplitUseCase) GetAll(satelliteName string, satellite *entity.
 	Position.X, Position.Y = uc.topsecretsplitService.GetLocation(alllocation...)
 
 	// Limpiar el mapa de datos de satélites después de obtener la posición
-	satelliteDataMap = nil
-	satelliteDataMap = make(map[string]*entity.SatelliteData)
-
 	// Verificar si se encontraron coordenadas y mensaje
 	if Position.X == 0 && Position.Y == 0 || Position.Message == "" {
 		return nil, errors.New("Insufficient satellite positions")
