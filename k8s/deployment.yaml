@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: app
-        image: us-central1-docker.pkg.dev/our-voice-417119/vozy/operation-quasar:v2.0
+        image: ""
         imagePullPolicy: Always
         ports:
         - containerPort: 8089

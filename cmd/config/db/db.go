@@ -9,11 +9,11 @@ import (
 
 func NewPostgreSQLDB() (*sql.DB, error) {
 
-	host := "34.41.188.11"
+	host := ""
 	port := "5432"
 	dbname := "starDB"
-	user := "admin"
-	password := "123456789!!!!!!!"
+	user := ""
+	password := ""
 
 	connStr := fmt.Sprintf("host=%s port=%s dbname=%s user=%s password=%s sslmode=disable",
 		host, port, dbname, user, password)
@@ -43,5 +43,3 @@ func NewPostgreSQLDB() (*sql.DB, error) {
 
 	return db, nil
 }
-
-
