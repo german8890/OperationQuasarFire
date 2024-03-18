@@ -14,11 +14,11 @@ type DBRepository struct {
 }
 
 // CreateTaskTotal provides a mock function with given fields: request
-func (_m *DBRepository) CreateTaskTotal(request *entity.SatelliteRequest) (string, error) {
+func (_m *DBRepository) Create(request *entity.SatelliteRequest) (string, error) {
 	ret := _m.Called(request)
 
 	if len(ret) == 0 {
-		panic("no return value specified for CreateTaskTotal")
+		panic("no return value specified for Create")
 	}
 
 	var r0 string
