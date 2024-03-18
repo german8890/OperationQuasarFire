@@ -11,7 +11,7 @@ spec:
     metadata:
       labels:
         app: operation-quasar
-        version: v2  # Asegúrate de que esta etiqueta coincida con la del selector
+        version: v2 
     spec:
       containers:
       - name: app
